@@ -8,33 +8,30 @@ export default class ShopApp extends Component {
 
   static PROPS = {
 
-    current: {}
+    currentItems: {}  // contains currently selected goods
   };
 
-  onInit() {
 
-    Store.addObserver((event)=>this.invalidate(), this._id);
+  // adds items to the cart
+  addItemsToCart() {
+
+
   }
 
-  onDone() {
+  // completely clears the cart
+  clearCart() {
 
-    Store.removeObserver(this._id);
+
   }
 
-  get counter() {
 
-    return Store.counter;
-  }
 
-  get list() {
 
-    return Store.list;
-  }
 
 
   onItemSelected({ value }) {
 
-    this.current = value;
+    this.currentItems = value;
   }
 }
 
