@@ -26,11 +26,21 @@ export default class Container extends Component {
           <article each="item of data"
                   >
                   {{item.name}}
-          </article>
+                  <img src="{{item.image}}" />
+                  {{item.description}}
 
+          <GoodsSelector
+                  value="{{item.id}}"
+                  value="{{item.id}}"
+                pattern="{{value}}"
+           hideCheckbox="true"
+                  >
+          </ GoodsSelector>
+          {{item.price}}<b> US $</b>
           <block if="data.length">
             <else>:emptyMessage</else>
           </block>
+          </article>
         </section>;
 
 
