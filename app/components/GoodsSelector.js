@@ -3,9 +3,10 @@ import Component from 'ui/Component.js';
 export default class GoodsSelector extends Component {
 
   static TEMPLATE =
-
-        <input type="checkbox" id="selector-{{value}}" props=":inputProps" />
-        ;
+  `<span class="item">
+      <input type="checkbox" id="selector-{{value}}" props=":inputProps" />
+      <span><transclude/></span>
+  </span>`;
 
   static PROPS = {
     class: { default: 'hidden' },

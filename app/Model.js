@@ -9,13 +9,13 @@ class Model extends Observable {
     this.list = this.restoreHotReload();
 
     this.goods = [
-      {          id: 1,
+      {          id: 0,
                name: "Something to buy",
               image: ".img/good1.jpg",
         description: "Some good words",
               price: 100
       },
-      {          id: 2,
+      {          id: 1,
                name: "Something else to buy",
               image: ".img/good2.jpg",
         description: "Some good words",
@@ -31,10 +31,11 @@ class Model extends Observable {
     return this.cart.length;
   }
 
-  get totalPrice() {
+  get totalPriceCounter() {
+
     var total = 0;
     for (var i = 0; i < this.cart.length; i++) {
-      total += this.cart[i].price;
+    total += this.cart[i].price;
     }
     return total;
   }
@@ -43,15 +44,21 @@ class Model extends Observable {
 
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
-      this.cart.push(item);
+
+      for (var x = 0; x < this.goods.length; x++) {
+        if (item == this.goods[x]['id']) {
+          this.cart.push(this.goods[x]);
+        }
+      }
     }
-    this.update(this.cart);
+
+    alert(this.cart);
   }
 
   clearCart() {
 
     this.cart = [];
-    this.update(this.cart);
+    alert(this.cart)
   }
 
   removeSelected(items) {
@@ -59,7 +66,7 @@ class Model extends Observable {
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
       for (var x = 0; i < this.goods.length; x++) {
-        if item == this.goods[x].id {
+        if (item == this.goods[x].id) {
           delete this.goods[x];
         }
       }
@@ -93,6 +100,6 @@ class Model extends Observable {
   }
 }
 
-const model = new Model();
+const store = new Model();
 
 export default store;

@@ -8,8 +8,8 @@ export default class ShopApp extends Component {
 
   static PROPS = {
 
-    currentItems: {}  // contains currently selected goods in the goods list
-    currentCartItems: {} // contains currently selected goods in the cart
+    currentItems: { default: [0, 1]},  // contains currently selected goods in the goods list
+    currentCartItems: { default: []} // contains currently selected goods in the cart
   };
 
 
@@ -32,7 +32,7 @@ export default class ShopApp extends Component {
   // returns the total price of goods in the cart
   get totalPrice() {
 
-    return Model.totalPrice();
+    return Model.totalPriceCounter();
   }
 
   // adds items to the cart

@@ -3,7 +3,7 @@ import Component from 'ui/Component.js';
 export default class Container extends Component {
 
   static TEMPLATE =
-/*    `<ul class="ui list">
+   /*`<ul class="ui list">
         <li each="item of data"
           click=":updateOnClick"
           data-value=":item.id">
@@ -18,37 +18,40 @@ export default class Container extends Component {
         <block if="data.length">
           <else><small class="empty">:emptyMessage</small></else>
         </block>
-    </ul>`;
-*/
+    </ul>`; */
 
-        // shows each element of given data
-        <section>
-          <article each="item of data"
-                  >
-                  {{item.name}}
-                  <img src="{{item.image}}" />
-                  {{item.description}}
+`<div class="ui items">
+  <div class="item" each="item of data">
+    <GoodsSelector value="{{item.id}}"
+                   pattern="{{value}}" />
+    <div class="image">
+      <img />
+    </div>
+    <div class="content">
+      <a class="header">{{item.name}}</a>
+      <div class="meta">
+        <span>Description</span>
+      </div>
+      <div class="description">
+        <p>{{item.description}}</p>
+      </div>
+      <div class="extra">
+        Price: $ {{item.price}}
+      </div>
+    </div>
+  </div>
+  <block if="data.length">
+    <else>:emptyMessage</else>
+  </block>
+</div>`;
 
-          <GoodsSelector
-                  value="{{item.id}}"
-                  value="{{item.id}}"
-                pattern="{{value}}"
-           hideCheckbox="true"
-                  >
-          </ GoodsSelector>
-          {{item.price}}<b> US $</b>
-          <block if="data.length">
-            <else>:emptyMessage</else>
-          </block>
-          </article>
-        </section>;
 
 
   static PROPS = {
     value: { default: null },
     valueChanged:{ },
     data: { default: [] },
-    emptyMessage: { default: 'No goods' }
+    emptyMessage: { default: 'No goods yet' }
   }
 }
 
