@@ -7,12 +7,66 @@ class Model extends Observable {
     super();
 
     this.list = this.restoreHotReload();
+
+    this.goods = [
+      {          id: 1,
+               name: "Something to buy",
+              image: ".img/good1.jpg",
+        description: "Some good words",
+              price: 100
+      },
+      {          id: 2,
+               name: "Something else to buy",
+              image: ".img/good2.jpg",
+        description: "Some good words",
+              price: 200
+      }
+    ];
+
+    this.cart = [];
   }
 
-  get counter() {
+  get cartCounter() {
 
-    return this.list.length;
+    return this.cart.length;
   }
+
+  get totalPrice() {
+    var total = 0;
+    for (var i = 0; i < this.cart.length; i++) {
+      total += this.cart[i].price;
+    }
+    return total;
+  }
+
+  addItemsToCart(items) {
+
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      this.cart.push(item);
+    }
+    this.update(this.cart);
+  }
+
+  clearCart() {
+
+    this.cart = [];
+    this.update(this.cart);
+  }
+
+  removeSelected(items) {
+
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      for (var x = 0; i < this.goods.length; x++) {
+        if item == this.goods[x].id {
+          delete this.goods[x];
+        }
+      }
+    }
+    this.update(this.cart);
+  }
+
 
   update(delta) {
 

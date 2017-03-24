@@ -1,13 +1,20 @@
 <div class="goodsList">
 
 <Button caption="В корзину" click=":addItemsToCart"/>
-<Container data="" />
+<Container data=":goods" value=":currentItems" valueChanged=":onItemSelected"/>
+<Button caption="По цене" click=":sortBy" value="price" />
+<Button caption="По названию" click=":sortBy" value="name" />
+
 </div>
 
 
-<div class="cart">
+<div class="cartList">
 
 <Button caption="Очистить корзину" click=":clearCart" />
-<Container data="" />
+<Button caption="Убрать выделенные" click=":removeSelected" />
+
+<Container data=":cart" value=":currentCartItems" valueChanged=":onItemSelected"/>
+<p>:cartCounter</p>
+<p>:totalPrise</p>
 
 </div>
