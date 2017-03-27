@@ -1,0 +1,8 @@
+li span input:checked ~ span {
+  color: white;
+  background-color: blue;
+}
+
+.list {
+  border: 1px solid black;
+}
