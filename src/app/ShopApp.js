@@ -1,5 +1,6 @@
 import Component from 'ui/Component.js';
-import Model from './Model.js';
+import Goods from './Goods.js';
+import Cart from './Cart.js';
 import TEMPLATE from './ShopApp.html';
 
 export default class ShopApp extends Component {
@@ -15,42 +16,42 @@ export default class ShopApp extends Component {
 
   get goods() {
 
-    return Model.goods;
+    return Goods.goods;
   }
 
   get cart() {
 
-    return Model.cart;
+    return Cart.cart;
   }
 
   // returns the number of goods in the cart
   get cartCounter() {
 
-    return Model.cartCounter;
+    return Cart.cartCounter;
   }
 
   // returns the total price of goods in the cart
   get totalPrice() {
 
-    return Model.totalPriceCounter();
+    return Cart.totalPriceCounter();
   }
 
   // adds items to the cart
   addItemsToCart() {
 
-    Model.addItemsToCart(this.currentItems);
+    Cart.addItemsToCart(this.currentItems);
   }
 
   // completely clears the cart
   clearCart() {
 
-    Model.clearCart();
+    Cart.clearCart();
   }
 
   // removes selected items from the cart
   removeSelected() {
 
-    Model.clearSelected(this.currentCartItems);
+    Cart.clearSelected(this.currentCartItems);
   }
 
   // sorts the goods list by given parameter
