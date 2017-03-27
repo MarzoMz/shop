@@ -56,10 +56,7 @@ export default class ShopApp extends Component {
   // sorts the goods list by given parameter
   sortBy({ value }) {
 
-
   }
-
-
 
   onItemSelected({ value }) {
 

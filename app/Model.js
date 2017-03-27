@@ -6,8 +6,6 @@ class Model extends Observable {
 
     super();
 
-    this.list = this.restoreHotReload();
-
     this.goods = [
       {          id: 0,
                name: "Something to buy",
@@ -58,7 +56,6 @@ class Model extends Observable {
   clearCart() {
 
     this.cart = [];
-    alert(this.cart)
   }
 
   removeSelected(items) {
@@ -74,7 +71,6 @@ class Model extends Observable {
     this.update(this.cart);
   }
 
-
   update(delta) {
 
     Object.assign(this, delta);
@@ -82,22 +78,6 @@ class Model extends Observable {
     this.notify(delta);
   }
 
-  restoreHotReload() {
-    const hot = module && module.hot;
-    if (hot) {
-
-      hot.addStatusHandler(function (d) {});
-      // hot.accept();
-      hot.dispose( data2 => {
-        data2.list = this.list;
-      });
-      const data = hot.data;
-      if (data) {
-        return data.list || [];
-      }
-    }
-    return [];
-  }
 }
 
 const store = new Model();
