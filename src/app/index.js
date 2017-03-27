@@ -1,6 +1,6 @@
-import { bootstrap } from 'ui/Framework.js';
+import { bootstrap } from 'lib/index.js';
 // import { renderer } from '../string/StringRenderer.js';
-import { renderer } from 'ui/dom/DOMRenderer.js';
+import { renderer } from 'lib/index.js';
 
 export { default as ShopApp } from './ShopApp.js';
 
